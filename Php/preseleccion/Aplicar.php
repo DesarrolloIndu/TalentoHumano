@@ -27,14 +27,20 @@ mysqli_close($conn);
 if ($Aplica == 1) {  
     $seleccion = new CrudpreSeleccion();  //Genera error 
     $insert = $seleccion->InsertSeleccion($Documento,$Solicitud,1);
-    echo json_encode( $insert . " Se crea proceso Se envia Correo poo ");
+    echo json_encode( $insert . " Se crea proceso......  " );
+    if ($Email == 1) {
+    echo json_encode(" Correo  enviado ok..........");
+    } else {
+    echo json_encode(" Correo no enviado  ..........Proceso ok ");
+    }
 }else{
-    echo json_encode(" No se crea proceso Se envia Correo ");
+    echo json_encode(" No se crea proceso.. ");
+    if ($Email == 1) {
+        echo json_encode(" Correo  enviado ok.......... No Proceso");
+        } else {
+        echo json_encode(" Correo no enviado  .......... NO Proceso");
+        }
 }
 
 //Envio Correo====================================================================================================
-if ($Email == 0) {
-    echo json_encode("No se envia Correo ");
-} else {
-    echo json_encode(" Se envia Correo ");
-}
+
